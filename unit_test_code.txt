@@ -1,0 +1,16 @@
+% number 0b0000000000000000
+
+#reset number
+start
+MOVLW 0b0000000000000000
+MOVWF number
+
+#loop until number = 9
+loop
+WOUTF,1 number
+INCRF number
+MOVLW 0b0000000000001001
+SUBWF,w number
+BTSSF,0 0b1111111111111111
+GOTO loop
+GOTO start
