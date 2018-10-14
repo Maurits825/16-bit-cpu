@@ -1,0 +1,6 @@
+before_script:
+  - python -V
+
+Test:
+  script:
+  - python unit_test_compiley.py
