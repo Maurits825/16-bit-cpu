@@ -1,4 +1,4 @@
-codefile = open('code_16_bit.txt', 'r')
+codefile = open('unit_test_code.txt', 'r')
 
 rawcode = list()
 binarycode = list()
@@ -43,15 +43,15 @@ for line in codeline:
             # Bit test
             elif 'BTS' in splitline[0]:
                 BT = splitline[0].split(',')
-                BT[1] = format(int(BT[1]), '04b') +
-                splitline[1].replace('0b', '')
+                BT[1] = format(int(BT[1]), '04b') + \
+                    splitline[1].replace('0b', '')
                 rawcode.append(BT)
 
             # Bit set and clear
             elif ('BS' or 'BC') in splitline[0]:
                 BT = splitline[0].split(',')
-                BT[1] = format(int(BT[1]), '04b') +
-                splitline[1].replace('0b', '')
+                BT[1] = format(int(BT[1]), '04b') + \
+                    splitline[1].replace('0b', '')
                 rawcode.append(BT)
 
             # literal values
@@ -70,8 +70,7 @@ for line in codeline:
                 rawcode.append(splitline)
     i = i + 1
 
-print 'Raw code:'
-print rawcode
+print('Raw code:', rawcode)
 
 i = 0
 for line in rawcode:
@@ -82,8 +81,7 @@ i = 0
 for line in binarycode:
     hexcode.append('%06X' % int(binarycode[i], 2))
     i = i + 1
-print 'Hex code:'
-print hexcode
+print('Hex code:', hexcode)
 
 i = 0
 Hexfile = open('hexcode_16_bit.txt', 'w')
