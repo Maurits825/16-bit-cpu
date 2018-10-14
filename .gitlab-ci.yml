@@ -3,4 +3,4 @@ before_script:
 
 Test:
   script:
-  - python unit_test_compiley.py
+  - python unit_test_compiler.py
