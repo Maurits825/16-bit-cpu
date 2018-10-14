@@ -3,6 +3,7 @@ compiler unit test
 """
 
 import compiler
+import filecmp
 
 
 def main():
@@ -11,7 +12,6 @@ def main():
     """
     print('Start UT')
     ut = UnitTestCompiler()
-    ut.unit_test()
     print('Done UT')
 
 
@@ -22,12 +22,27 @@ class UnitTestCompiler:
 
     def __init__(self):
         self.error = 0
+        self.expectedFile = 'unit_test_expected_hex.txt'
+        self.outputFile = 'hexcode_16_bit.txt'
+        self.run_test()
 
-    def unit_test(self):
+    def run_test(self):
         """
         test compiler
         """
-        compiler.compile()
+        compiler.compileGG()
+        self.check_output()
+
+    def check_output(self):
+        """
+        check output file
+        """
+        if filecmp.cmp(self.expectedFile, self.outputFile):
+            print('Passed!')
+            return 0
+        else:
+            print('Failed!')
+            return -1
 
 
 if __name__ == "__main__":

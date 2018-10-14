@@ -4,7 +4,8 @@ compiler for the gg assembly language
 
 import json
 
-def compile():
+
+def compileGG():
     codefile = open('unit_test_code.txt', 'r')
 
     rawcode = list()
@@ -39,7 +40,7 @@ def compile():
                     rawcode.append(BT)
 
                 # Bit set and clear
-                elif ('BS' or 'BC') in splitline[0]:
+                elif 'BS' in splitline[0] or 'BC' in splitline[0]:
                     BT = splitline[0].split(',')
                     BT[1] = format(int(BT[1]), '04b') + \
                         splitline[1].replace('0b', '')
@@ -61,7 +62,7 @@ def compile():
                     rawcode.append(splitline)
         i = i + 1
 
-    print('Raw code:', rawcode)
+    # print('Raw code:', rawcode)
 
     i = 0
     for line in rawcode:
@@ -72,7 +73,7 @@ def compile():
     for line in binarycode:
         hexcode.append('%06X' % int(binarycode[i], 2))
         i = i + 1
-    print('Hex code:', hexcode)
+    # print('Hex code:', hexcode)
 
     i = 0
     Hexfile = open('hexcode_16_bit.txt', 'w')
