@@ -4,3 +4,8 @@ before_script:
 Test:
   script:
   - python unit_test_compiler.py
+
+Coverage:
+  script:
+  - coverage run --omit=unit_test_compiler.py unit_test_compiler.py
+  - coverage report -m
